@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% csrf_token %}
+
+<script type="text/javascript">
+  function validateOrder2() {
+      document.getElementById("validationCustom21").required=true;
+      document.getElementById("validationCustom22").required=true;
+      document.getElementById("validationCustom23").required=true;
+      document.getElementById("validationCustom24").required=true;
+      document.getElementById("validationCustom25").required=true;
+  }
+  function unvalidateOrder2() {
+      document.getElementById("validationCustom21").required=false;
+      document.getElementById("validationCustom22").required=false;
+      document.getElementById("validationCustom23").required=false;
+      document.getElementById("validationCustom24").required=false;
+      document.getElementById("validationCustom25").required=false;
+  }
+</script>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Англи
+      <small>Чанар</small>
+    </h1>
+    <!-- Content Row -->
+
+
+    <!-- /.row -->
+    <form action="{% url 'result' %}" method="post" class="needs-validation" validate>{% csrf_token %}
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-header">Таны захиалах бараа</h6>
+
+      <div class="form-row">
+        <div class="col-sm-8">
+          <label for="validationCustom01">Захиалах барааны линк</label>
+          <input type="text" name="product_link1" class="form-control" id="validationCustom01" placeholder="Захиалах барааны линк" value="9" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3">
+          <label for="validationCustom02">Барааны үнэ</label>
+          <input type="text" name="price1" class="form-control" id="validationCustom02" placeholder="Үнэ" value="9"  required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+      </div>
+      <div class="form-row">
+        <div class="col mb-3">
+          <label for="validationCustom04">Барааны төрөл</label>
+          <select name="type1" class="custom-select" id="inputGroupSelect01">
+  <option selected>Сонгох...</option>
+  <<optgroup label="Хувцас">
+
+  </optgroup>
+  <option value="1">Хувцас</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+          <div class="invalid-feedback">
+            Please provide a valid state.
+          </div>
+        </div>
+        <div class="col mb-3">
+          <label for="validationCustom05">Тоо ширхэг</label>
+          <input type="number" name="amount1" class="form-control" id="validationCustom05" placeholder="Тоо ширхэг" value="1" required>
+          <div class="invalid-feedback">
+            Please provide a valid zip.
+          </div>
+        </div>
+        <div class="col mb-3">
+          <label for="validationCustom05">Өнгө</label>
+          <input type="text" name="colour1" class="form-control" id="validationCustom05" placeholder="Өнгө" value="9"  required>
+          <div class="invalid-feedback">
+            Please provide a valid zip.
+          </div>
+        </div>
+        <div class="col mb-3">
+          <label for="validationCustom03">Хэмжээ тайлбар</label>
+          <input type="text" name="size_description1" class="form-control" id="validationCustom03" placeholder="Тайлбар" value="9" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+      </div>
+      <button onclick="validateOrder2()" class="btnValidate1 btn btn-info btn-sm mb-3 text-md-right" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+        Өөр бараа нэмэх
+      </button>
+    </div>
+  </div>
+  <!-- End Oder 1-->
+
+</br>
+  <!-- Oder 2-->
+  <div  id="collapseExample1" class="collapse card h-100 bg-light">
+    <div class="card-body">
+      <h6 class="card-header">Бараа 2 <button  onclick="unvalidateOrder2()" class="btn btn-danger btn-sm float-right mb-3" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false">Болих</button></h6>
+
+    <div class="form-row">
+      <div class="col-sm-8">
+        <label for="validationCustom01">Захиалах барааны линк</label>
+        <input type="text" class="form-control" id="validationCustom21" value="99" placeholder="Захиалах бараны нэр">
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <label for="validationCustom02">Барааны үнэ</label>
+        <input type="number" class="form-control" id="validationCustom22" placeholder="Үнэ" >
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="col mb-3">
+        <label for="validationCustom04">Барааны төрөл</label>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>Сонгох...</option>
+          <optgroup label="Хувцас">
+
+          </optgroup>
+          <option value="1">Хувцас</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          </select>
+        <div class="invalid-feedback">
+          Please provide a valid state.
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label for="validationCustom05">Тоо ширхэг</label>
+        <input type="number" class="form-control" id="validationCustom23" placeholder="Тоо ширхэг"  value="1">
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label for="validationCustom05">Өнгө</label>
+        <input type="text" class="form-control" id="validationCustom24" placeholder="Өнгө">
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label for="validationCustom03">Хэмжээ тайлбар</label>
+        <input type="text" class="form-control" id="validationCustom25" placeholder="Тайлбар">
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-info btn-sm mb-3 text-md-right" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+      Өөр бараа нэмэх</button>
+
+  </div>
+</div>
+  <!-- End Order 2-->
+
+  <!-- Oder 3-->
+  <div  id="collapseExample2" class="collapse multi-collapse card h-100">
+    <div class="card-body">
+      <h6 class="card-header">Таны захиалах бараа 2</h6>
+
+    <div class="form-row">
+      <div class="col-sm-8">
+        <label for="validationCustom01">Захиалах барааны линк</label>
+        <input type="text" class="form-control" id="validationCustom01" placeholder="Захиалах бараны нэр" >
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <label for="validationCustom02">Барааны үнэ</label>
+        <input type="text" class="form-control" id="validationCustom02" placeholder="Үнэ">
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="col mb-3">
+        <label for="validationCustom04">Барааны төрөл</label>
+        <select class="custom-select" id="inputGroupSelect01">
+<option selected>Сонгох...</option>
+<<optgroup label="Хувцас">
+
+</optgroup>
+<option value="1">Хувцас</option>
+<option value="2">Two</option>
+<option value="3">Three</option>
+</select>
+        <div class="invalid-feedback">
+          Please provide a valid state.
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label for="validationCustom05">Тоо ширхэг</label>
+        <input type="number" class="form-control" id="validationCustom05" placeholder="Тоо ширхэг" value="1" >
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label for="validationCustom05">Өнгө</label>
+        <input type="text" class="form-control" id="validationCustom05" placeholder="Өнгө" >
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col mb-3">
+        <label for="validationCustom03">Хэмжээ тайлбар</label>
+        <input type="text" class="form-control" id="validationCustom03" placeholder="Тайлбар" >
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-info btn-sm mb-3 text-md-right" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">
+      Өөр бараа нэмэх</button>
+
+  </div>
+</div>
+  <!-- End Order 3-->
+
+  <!-- Personal infos-->
+    <div  class="card h-100">
+      <div class="card-body m-0">
+        <h6 class="card-header">Таны хувийн мэдээлэл</h6>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01">Таны нэр</label>
+          <input type="text" class="form-control" id="validationCustom01" placeholder="Таны нэр" value="Mark" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Таны утас</label>
+          <input type="text" class="form-control" id="validationCustom02" placeholder="Таны утас" value="Otto" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustomUsername">Таны и-мэйл</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+            </div>
+            <input type="text" class="form-control" id="validationCustomUsername" placeholder="Таны и-мэйл хаяг" aria-describedby="inputGroupPrepend" value="Otto" required>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-sm-8 mb-3">
+          <label for="validationCustom03">Нэмэлт мэдээлэл</label>
+          <input type="text" class="form-control" id="validationCustom03" placeholder="Нэмэлт мэдээлэл" value="Otto" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Үйлчилгээний нөхцөл
+          </label>
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Үнийн санал авах</button>
+
+    </div>
+  </div>
+    <!--  end Personal infos-->
+</form>
+  <div class="col-sm-4">
+
+  </div>
+
+  </div>
+  <!-- /.container -->
+
+
+
+
+
+{% endblock %}

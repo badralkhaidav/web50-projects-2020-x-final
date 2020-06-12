@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block body %}
+
+
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('{% static 'img/james.jpg' %}')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Мөнгө шилжүүлэх</h3>
+            <p>Шуурхай найдвартай</p>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('{% static 'img/money.jpg' %}')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Бизнесийн найдвартай түнш</h3>
+            <p>Мөнгө солилцох систем</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('{% static 'img/saving.jpg' %}')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Таны мэдээлэл санхүүгийн түүх</h3>
+            <p>Монголд санхүүгийн түүх үүсгэнэ</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+
+<h1 class="my-4"></h1>
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col mb-4">
+
+          <a href="{% url 'transfer_order' %}" class="btn btn-primary active btn-block">Мөнгө шилжүүлэх</a>
+
+      </div>
+      <div class="col mb-4">
+
+          <a href="{% url 'transfer_check' %}"  class="btn btn-info active btn-block">Шилжүүлэг шалгах</a>
+
+      </div>
+      <div class="col mb-4">
+
+          <a href="#" class="btn btn-success active btn-block">Төлбөр төлөх</a>
+
+      </div>
+    </div>
+    <!-- /.row -->
+  <h1 class="my-4"></h1>
+    <!-- Marketing 1 Icons Section -->
+    <div class="row align-items-center">
+
+        <div class="col"><img src="{% static 'img/shop1.jpg' %}" class="rounded mx-auto d-block" alt="amazon">col</div>
+        <div class="col"><img src="{% static 'img/shop1.jpg' %}" class="rounded mx-auto d-block" alt="">col</div>
+        <div class="col"><img src="{% static 'img/shop1.jpg' %}" class="rounded mx-auto d-block" alt="">col</div>
+        <div class="col"><img src="" class="rounded mx-auto d-block" alt="">col</div>
+        <div class="w-100"></div>
+        <div class="col"><img src="" class="rounded mx-auto d-block" alt="">col</div>
+        <div class="col"><img src="" class="rounded mx-auto d-block" alt="">col</div>
+        <div class="col"><img src="" class="rounded mx-auto d-block" alt="">col</div>
+        <div class="col"><img src="" class="rounded mx-auto d-block" alt="">col</div>
+
+    </div>
+    <!-- /.row 1 -->
+
+    <!-- Portfolio Section -->
+    <h2>Онцгой бараа</h2>
+https://www.tdbm.mn/script.php?mod=rate&ln=mn
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Two</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Three</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Four</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Five</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Six</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Features Section -->
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>Modern Business Features</h2>
+        <p>The Modern Business template by Start Bootstrap includes:</p>
+        <ul>
+          <li>
+            <strong>Bootstrap v4</strong>
+          </li>
+          <li>jQuery</li>
+          <li>Font Awesome</li>
+          <li>Working contact form with validation</li>
+          <li>Unstyled page elements for easy customization</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      </div>
+      <div class="col-lg-6">
+        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Call to Action Section -->
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+
+
+{% endblock %}

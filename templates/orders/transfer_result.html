@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% csrf_token %}
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+
+  let status = document.getElementById("status").innerHTML;
+  if(status = 'Хүсэлт илгээсэн'){
+
+   document.getElementById("Хүсэлт илгээсэн").innerHTML= '&#10004;';
+
+  };
+  if(status == 'Хариу ирсэн'){
+
+   document.getElementById("Хариу ирсэн").innerHTML = '&#10004;';
+
+  }
+  });
+</script>
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    <small>{{ order.id }} - дугаартай шилжүүлэг</small>
+  </h1>
+
+  <!-- Vertical Steppers -->
+  <div class="row mt-1">
+    <div class="col-mb-4">
+      <div class="card">
+      <!-- Stepers Wrapper -->
+      <ul class="stepper stepper-vertical">
+
+        <!-- First Step -->
+        <li class="completed">
+          <a href="#!">
+            <span class="circle">1</span>
+            <span class="label">Хүсэлт илгээсэн</span>
+          </a>
+        </li>
+
+        <!-- Second Step -->
+        <li class="active">
+
+          <!--Section Title -->
+          <a href="#!">
+            <span class="circle">2</span>
+            <span class="label">Tolbor tolson</span>
+          </a>
+
+          <!-- Section Description -->
+          <div class="step-content grey lighten-3">
+            <p>Tailbar baij bolno</p>
+
+          </div>
+        </li>
+
+        <!-- Third Step -->
+        <li class="primary">
+          <a href="#!">
+            <span class="circle">3<i class="fas fa-exclamation"></i></span>
+            <span class="label">System medeelliig shalgaj baina</span>
+          </a>
+        </li>
+
+        <!-- Fourth Step -->
+        <li>
+          <a href="#!">
+            <span class="circle">4</span>
+            <span class="label">Huleen avagch ruu shiljuulsen</span>
+          </a>
+        </li>
+
+      </ul>
+      <!-- /.Stepers Wrapper -->
+      </div>
+    </div>
+
+  <!-- /.Vertical Steppers -->
+
+    <div class="col-6">
+      <div class="card card-body m-0">
+        <h5 class="card-header bg-primary text-white">Захиалгын мэдээлэл</h5>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom01">Dugaar</label>
+            <input type="text" class="form-control" name="reciever_name" id="reciever_name" placeholder="Таны нэр" readonly value="{{ order.id }}" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Шилжүүлсэн паунд, £</label>
+            <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" readonly placeholder="{{ order.gbp_amount }}" value="{{ order.gbp_amount }}" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          </div>
+          <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Shiljih dun Төгрөгөөр:</label>
+            <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" readonly placeholder="{{ order.mnt_amount}}" value="{{ order.mnt_amount}}" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Тухайн өдрийн ханш:</label>
+            <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" readonly  value="{{ order.gbpToMntDailyRate }}" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Шимтгэл, £:</label>
+            <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" readonly value="{{ order.fee}} " required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Шилжүүлэгч нэр:</label>
+            <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" readonly value="{{ order.sender_name }}" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Хүлээн авагч нэр:</label>
+            <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" readonly value="{{ order.reciever_name}}" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+{% endblock %}

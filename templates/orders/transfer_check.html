@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% csrf_token %}
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Шилжүүлэг шалгах
+
+    </h1>
+    <!-- Content Row -->
+
+
+    <!-- /.row -->
+    <form action="{% url 'transfer_result_result' %}" method="post" class="needs-validation" validate>{% csrf_token %}
+    <div class="card h-100">
+      <div class="card-body">
+      <div class="form-row">
+        <div class="col-sm-4 mb-3">
+          <label for="validationCustom01">Шилжүүлгийн дугаар:</label>
+          <input type="number" maxlength="8" name="id" class="form-control" id="validationCustom01" placeholder="--------"  required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3">
+          <label for="validationCustom02">Шилжүүлэгчийн утасны дугаар:</label>
+          <input type="number" name="sender_telephone" class="form-control" id="validationCustom02" placeholder="--------"   required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">ШИЛЖҮҮЛЭГ ШАЛГАХ</button>
+    </div>
+  </div>
+  <!-- End Oder 1-->
+
+</br>
+
+  <!-- Personal infos-->
+
+    <!--  end Personal infos-->
+</form>
+  <div class="col-sm-4">
+
+  </div>
+
+  </div>
+  <!-- /.container -->
+
+
+
+
+
+{% endblock %}

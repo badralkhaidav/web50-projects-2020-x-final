@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% csrf_token %}
+
+<script type="text/javascript">
+
+
+function toExchange(){
+    var direction = document.querySelector("#inputGroupSelectDirection");
+    var sending_amount = document.getElementById("sending_amount").value;
+    var fee = document.getElementById("fee").value;
+    sending_amount = sending_amount.match(/\d/g);
+    sending_amount=sending_amount.join("");
+    sending_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById("sending_amount").value = addCommas(sending_amount);
+
+    var rate = document.querySelector("#rateShow").value;
+    rate = rate.match(/\d/g);
+    rate = rate.join("");
+    rate = rate/100;
+
+      if( direction.value === '1'){
+        var add_commas = addCommas((rate*sending_amount*0.98).toFixed(0))
+
+         document.getElementById("receiving_amount").value= add_commas;
+         document.getElementById("fee").value=(sending_amount*0.02).toFixed(0);
+      }
+      if( direction.value === '2'){
+        var add_commas = addCommas((sending_amount*0.98/rate).toFixed(0))
+
+        document.getElementById("receiving_amount").value=add_commas;
+        document.getElementById("fee").value=(sending_amount*0.02/rate).toFixed(0);
+      }
+
+}
+
+
+function addCommas(num) {
+    var numb = num.match(/\d/g);
+    numb = numb.join("");
+
+    var num_parts = numb.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+  receiving_amount.value="0";
+  //receiving_amount.disabled = true;
+  sending_amount.value="0";
+  fee.value="0";
+  document.querySelector("#lblCurrency").innerHTML="Шилжүүлэх дүн, £";
+  document.querySelector("#lblReceiving").innerHTML="Хүлээн авах дүн, MNT";
+  document.querySelector("#rateShow").value=document.getElementById("rate").innerHTML;
+
+
+
+
+});
+
+function directionFunction(){
+
+  var direction = document.querySelector("#inputGroupSelectDirection");
+  var fee = document.getElementById("fee");
+  var lblCurrency=document.querySelector("#lblCurrency").innerHTML;
+
+    if( direction.value === '1'){
+      receiving_amount.value="0";
+      sending_amount.value="0";
+      fee.value="0";
+      document.querySelector("#lblCurrency").innerHTML="Шилжүүлэх дүн, £";
+      document.querySelector("#lblReceiving").innerHTML="Хүлээн авах дүн, MNT";
+      document.querySelector("#rateShow").value=document.getElementById("rate").innerHTML;
+    }
+    if( direction.value === '2'){
+      receiving_amount.value="0";
+      sending_amount.value="0";
+      fee.value="0";
+      document.querySelector("#lblCurrency").innerHTML="Шилжүүлэх дүн, MNT";
+      document.querySelector("#lblReceiving").innerHTML="Хүлээн авах дүн, £";
+      document.querySelector("#rateShow").value=document.getElementById("rate1").innerHTML;
+    }
+  };
+
+
+
+</script>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">GSB Capital
+      <small></small>
+    </h1>
+    <!-- Content Row -->
+
+
+    <!-- /.row -->
+    <form action="{% url 'transfer_result' %}" method="post" class="needs-validation" validate>{% csrf_token %}
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-header">Мөнгөн шилжүүлэг</h6>
+  <!-- Content Row 1-->
+      <div class="form-row">
+        <div class="col-sm-4 mb-3">
+          <label for="validationCustom02">Шилжүүлэх чиглэл</label>
+
+          <select name="direction" class="custom-select" id="inputGroupSelectDirection" onchange="directionFunction()">
+            <option value="1">Англиас Монгол руу</option>
+            <option value="2">Монголоос Англи руу</option>
+
+          </select>
+          <div class="invalid-feedback">
+            Please provide a valid state.
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label id="lblCurrency" for="validationCustom01">Шилжүүлэх дүн, £</label>
+          <input name="sending_amount" type="text" class="form-control" onchange="toExchange()" id="sending_amount" required>
+
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label id="lblReceiving" for="validationCustomUsername">Хүлээн авах, MNT</label>
+          <div class="input-group">
+
+            <input type="text" class="form-control" id="receiving_amount"  onchange="toExchange()" name="receiving_amount"  readonly required>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- end Content Row 1 -->
+
+  <!-- Content Row 2-->
+      <div class="form-row">
+        <div class="col-sm-4 mb-3">
+          <label for="validationCustom02"></label>
+
+        </div>
+
+        <div class="col-sm-4">
+          <label for="validationCustom02">Ханш, £ -> MNT</label>
+        <input name="rate" type="text" class="form-control" onchange="toThousandGbp()" readonly id="rateShow" onchange="toExchange()" required>
+          <div class="invalid-feedback">
+            Please provide a valid state.
+          </div>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <label for="validationCustomUsername">Шимтгэл, £</label>
+          <div class="input-group">
+
+            <input type="text" class="form-control" id="fee" name="fee" onchange="toThousandMnt()"  readonly  aria-describedby="inputGroupPrepend"  required>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- end Content Row 2 -->
+    </div>
+  </div>
+  <!-- End Oder 1-->
+</br>
+
+<!-- Reciever Personal infos-->
+  <div  class="card h-100">
+    <div class="card-body m-0">
+      <h6 class="card-header">Хүлээн авагчийн мэдээлэл</h6>
+
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Нэр</label>
+        <input type="text" class="form-control" name="reciever_name" id="reciever_name" placeholder="Таны нэр" value="Mark" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom02">Утас</label>
+        <input type="text" class="form-control" name="reciever_telephone" id="reciever_telephone" placeholder="Таны утас" value="Otto" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationCustomUsername">И-мэйл</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+          </div>
+          <input type="text" class="form-control" name="reciever_email" id="reciever_email" placeholder="Таны и-мэйл хаяг" aria-describedby="inputGroupPrepend" value="Otto" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm-4 mb-3">
+        <label for="validationCustom03">Регистерийн дугаар</label>
+        <input type="text" class="form-control" id="reciever_register" name="reciever_register" placeholder="Нэмэлт мэдээлэл" value="Otto" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <label for="validationCustom03">Банкны нэр</label>
+        <input type="text" class="form-control" id="reciever_bank" name="reciever_bank" placeholder="Нэмэлт мэдээлэл" value="Otto" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <label for="validationCustom03">Дансны дугаар</label>
+        <input type="text" class="form-control" id="reciever_account" name="reciever_account" placeholder="Нэмэлт мэдээлэл" value="Otto" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <!--  end Reciever Personal infos-->
+
+
+  <!-- Sender Personal infos-->
+    <div  class="card h-100">
+      <div class="card-body m-0">
+        <h6 class="card-header">Шилжүүлэгчийн мэдээлэл</h6>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01">Таны нэр</label>
+          <input type="text" class="form-control" id="sender_name" name="sender_name" placeholder="Таны нэр" value="Mark" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Таны утас</label>
+          <input type="text" class="form-control" id="sender_telephone" name="sender_telephone" placeholder="Таны утас" value="Otto" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustomUsername">Таны и-мэйл</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+            </div>
+            <input type="text" class="form-control" id="sender_email" name="sender_email" placeholder="Таны и-мэйл хаяг" aria-describedby="inputGroupPrepend" value="Otto" required>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-sm-8 mb-3">
+          <label for="validationCustom03">Хаяг, пост код</label>
+          <input type="text" class="form-control" id="sender_postcode" name="sender_postcode" placeholder="Нэмэлт мэдээлэл" value="Otto" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Үйлчилгээний нөхцөл
+          </label>
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Үнийн санал авах</button>
+
+    </div>
+  </div>
+    <!--  end Sender Personal infos-->
+</form>
+  <div class="col-sm-4">
+
+  </div>
+
+  </div>
+  <!-- /.container -->
+
+
+<p hidden id="rate">{{ rate }}</p>  <p hidden id="rate1" >{{ rate1 }}</p>
+
+
+
+{% endblock %}

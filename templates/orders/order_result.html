@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% csrf_token %}
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+
+  let status = document.getElementById("status").innerHTML;
+  if(status = 'Хүсэлт илгээсэн'){
+
+   document.getElementById("Хүсэлт илгээсэн").innerHTML= '&#10004;';
+
+  };
+  if(status == 'Хариу ирсэн'){
+
+   document.getElementById("Хариу ирсэн").innerHTML = '&#10004;';
+
+  }
+  });
+</script>
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    <small>{{ order.id }} - дугаартай ачааны мэдээлэл</small>
+  </h1>
+
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <h5 class="card-header">Ачааны статус</h5>
+
+        <table class=table>
+          <tbody>
+            <tr  class="table-success">
+              <td >Хүсэлт илгээсэн</td>
+              <td id='Хүсэлт илгээсэн'>&#10004;</td>
+            </tr>
+            <tr id='Хариу ирсэн' class="table-primary">
+              <td >Хариу ирсэн</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Бараа захиалга хийгдсэн</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Бараа худалдан авалт хийгдсэн</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Бараа Англи дахь хаягт ирсэн</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Бараа Англиас илгээгдсэн</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Замдаа</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Бараа гааль дээр</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Бараа авахад бэлэн</td>
+              <td></td>
+            </tr>
+            <tr class="table-active">
+              <td>Хүлээлгэн өгсөн</td>
+              <td></td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card card-outline-primary">
+        <h5 class="card-header bg-primary text-white">Захиалагчийн мэдээлэл</h5>
+        <table class=table>
+          <tbody>
+            <tr>
+              <td>Захиалгын дугаар:</td>
+              <td>{{ order.id }} </td>
+            </tr>
+            <tr>
+              <td>Нэр:</td>
+              <td>{{ order.name }}  </td>
+            </tr>
+            <tr>
+              <td>Утас:</td>
+              <td>{{ order.telephone }}  </td>
+            </tr>
+            <tr>
+              <td>И-мэйл</td>
+              <td>{{ order.email }}  </td>
+            </tr>
+            <tr>
+              <td>Бараа:</td>
+              <td>{{ order.product_link }}  </td>
+            </tr>
+            <tr>
+              <td>Тоо ширхэг:</td>
+              <td>{{ order.amount }}  </td>
+            </tr>
+            <tr>
+              <td>Захиалсан огноо:</td>
+              <td>{{ order.date_created }}  </td>
+            </tr>
+            <tr>
+              <td>Захиалсан огноо:</td>
+              <td>{{ order.date_created }}  </td>
+            </tr>
+            <tr>
+              <td>Төлөв:</td>
+              <td id="status"> {{ order.status }}  </td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+{% endblock %}
